@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FlickrService, ISize } from '../flickr.service';
 
 @Component({
@@ -7,22 +7,33 @@ import { FlickrService, ISize } from '../flickr.service';
   styleUrls: ['./flickr-image.component.css']
 })
 export class FlickrImageComponent implements OnInit {
-  sizes: ISize[] = [];
-  searchId: string = '';
-  errorMessage = 'No images here. Would you try to search for anything else?'
+  private sizes: ISize[] = [];
+  largeSquare: ISize;
+  requestPending: boolean = false;
+  @Input() imageId: string;
 
   constructor(
     private flickServise: FlickrService,
   ) { }
 
-  searchPicture(id: string): void {
+  getPicture(id: string): void {
+    this.requestPending = true;
     this.flickServise.getInfo(id).subscribe({
-      // next: sizes => this.sizes = sizes,
-      error: err => this.errorMessage = err
-      })
-    }
+      next: (resp) => {
+        this.sizes = resp.sizes.size;
+        this.largeSquare = this.getSizeByLabel('Large Square');
+        this.requestPending = false;
 
-  ngOnInit(): void {
+      },
+      error: console.log
+      })
   }
 
+  getSizeByLabel(label: string) {
+    return this.sizes.find((size) => size.label === label);
+  }
+
+  ngOnInit(): void {
+    this.getPicture(this.imageId);
+  }
 }

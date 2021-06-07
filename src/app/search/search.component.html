@@ -8,9 +8,9 @@
   <p *ngIf="this.requestPending">Searching...</p>
   <p>Search goes here</p>
 
-  <div class="row">
-    <div *ngFor="let product of photos">
-      <!-- <img src={{}} alt=""> -->
+  <div class="row text-center m-3">
+    <div *ngFor="let photo of photos" class="col-4 border bg-light p-4">
+      <app-flickr-image [imageId]="photo.id" ></app-flickr-image>
     </div>
   </div>
 </div>

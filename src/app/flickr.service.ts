@@ -61,6 +61,6 @@ export class FlickrService {
   }
 
   getInfo(id: string): Observable<SizeResponse> {
-    return this.httpClient.get<SizeResponse>(this.url, { params: { id, api_key: this.apiKey, format: 'json', method: 'flickr.photos.getSize', nojsoncallback: '1' } });
+    return this.httpClient.get<SizeResponse>(this.url, { params: { photo_id: id, api_key: this.apiKey, format: 'json', method: 'flickr.photos.getSizes', nojsoncallback: '1' } });
   }
 }
