@@ -1,8 +1,16 @@
 <div class="container">
   <form  class="container my-2">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Find images" aria-label="Find images">
+      <input type="text" class="form-control" placeholder="Find images" name="searchText" aria-label="Find images" [(ngModel)]="searchText" />
+      <input type='button' class="btn" (click)="handleSearch($event)" value="Submit" />
     </div>
   </form>
+  <p *ngIf="this.requestPending">Searching...</p>
   <p>Search goes here</p>
+
+  <div class="row">
+    <div *ngFor="let product of photos">
+      <!-- <img src={{}} alt=""> -->
+    </div>
+  </div>
 </div>
