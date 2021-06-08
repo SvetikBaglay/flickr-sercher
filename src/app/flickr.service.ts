@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PathLocationStrategy } from '@angular/common';
 
 export interface SearchResponse {
   photos: {
@@ -56,8 +55,8 @@ export class FlickrService {
 
   constructor(private httpClient: HttpClient) { }
 
-  search(text: string): Observable<SearchResponse> {
-    return this.httpClient.get<SearchResponse>(this.url, { params: { text, api_key: this.apiKey, format: 'json', method: 'flickr.photos.search', nojsoncallback: '1' } });
+  search(text: string, page: string): Observable<SearchResponse> {
+    return this.httpClient.get<SearchResponse>(this.url, { params: { text: text, api_key: this.apiKey, page: page, format: 'json', method: 'flickr.photos.search', nojsoncallback: '1' } });
   }
 
   getInfo(id: string): Observable<SizeResponse> {

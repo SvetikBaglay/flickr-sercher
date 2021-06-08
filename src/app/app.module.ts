@@ -9,24 +9,28 @@ import { SearchComponent } from './search/search.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlickrImageComponent } from './flickr-image/flickr-image.component';
+import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     BookmarksComponent,
-    FlickrImageComponent
+    FlickrImageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbPaginationModule,
+    NgbAlertModule,
     RouterModule.forRoot([
       { path: 'search', component: SearchComponent },
       { path: 'bookmarks', component: BookmarksComponent },
       { path: '**', redirectTo: 'search', pathMatch: 'full'},
-    ])
+    ]),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
