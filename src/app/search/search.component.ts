@@ -37,8 +37,6 @@ export class SearchComponent implements OnInit {
   }
 
   onChangePage(page: number): void {
-    console.log('page: ', page);
-
     this.handleSearch(page);
   }
 

@@ -52,6 +52,7 @@ export class FlickrService {
   private apiKey = "3bbea5d9c2eba88058bb34d49852164a";
   private secret = "6a73d3bcaedf05cc";
   private url = "https://www.flickr.com/services/rest/";
+  private savePhotos = [];
 
   constructor(private httpClient: HttpClient) { }
 

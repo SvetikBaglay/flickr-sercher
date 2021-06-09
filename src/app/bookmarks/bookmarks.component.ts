@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookmarkService, IBookmark  } from '../bookmark.service';
 
 @Component({
   selector: 'app-bookmarks',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bookmarks.component.css']
 })
 export class BookmarksComponent implements OnInit {
+  savePhotos: IBookmark[];
 
-  constructor() { }
+  constructor(
+    private bookmarkServise: BookmarkService,
+  ) { }
 
   ngOnInit(): void {
+    this.savePhotos = this.bookmarkServise.getPhotos()
   }
 
 }
