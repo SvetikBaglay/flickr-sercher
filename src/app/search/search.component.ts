@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickrService, SearchResponse, IPhoto } from '../flickr.service';
+import { BookmarkService } from '../bookmark.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -15,6 +17,7 @@ export class SearchComponent implements OnInit {
   photosTotal: number;
   constructor(
     private flickServise: FlickrService,
+    private bookmarkService: BookmarkService
   ) { }
 
   handleSearch(page: number): void {
@@ -38,6 +41,18 @@ export class SearchComponent implements OnInit {
 
   onChangePage(page: number): void {
     this.handleSearch(page);
+  }
+
+  isPhotoBookmarked(id: string): boolean {
+    return this.bookmarkService.checkPhoto(id);
+  }
+
+  onBookmark = (id: string): void => {
+    this.bookmarkService.addPhoto({id})
+  }
+
+  onUnbookmark = (id: string): void => {
+    this.bookmarkService.removePhoto(id)
   }
 
   ngOnInit(): void {

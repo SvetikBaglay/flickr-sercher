@@ -14,7 +14,7 @@ export class BookmarkService {
 
   constructor() { }
 
-  addPhoto(photo: IPhoto) {
+  addPhoto(photo: IBookmark) {
     this.savePhotos.push({ id: photo.id });
     return this.savePhotos
   }
@@ -31,17 +31,17 @@ export class BookmarkService {
        }
     }
     this.savePhotos = deletePhoto;
+    return this.savePhotos;
   }
 
   checkPhoto(id: string) {
     let i = 0;
     for (i = 0; i < this.savePhotos.length; i++) {
-      if (this.savePhotos[i].id != id ) {
+      if (this.savePhotos[i].id == id ) {
         return true
-      } else {
-        false
       }
     }
+    return false;
   }
 
 }

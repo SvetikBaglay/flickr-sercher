@@ -13,6 +13,10 @@ export class BookmarksComponent implements OnInit {
     private bookmarkServise: BookmarkService,
   ) { }
 
+  deleteBookmarksPhoto(id: string): void {
+    this.savePhotos = this.bookmarkServise.removePhoto(id);
+  }
+
   ngOnInit(): void {
     this.savePhotos = this.bookmarkServise.getPhotos()
   }

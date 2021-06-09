@@ -11,6 +11,9 @@ export class FlickrImageComponent implements OnInit {
   largeSquare: ISize;
   requestPending: boolean = false;
   @Input() imageId: string;
+  @Input() onBookmark: (id: string) => void;
+  @Input() onUnbookmark: (id: string) => void;
+  @Input() isBookmarked: boolean = false;
 
   constructor(
     private flickServise: FlickrService,
@@ -29,11 +32,21 @@ export class FlickrImageComponent implements OnInit {
       })
   }
 
+  handleBookmark (id: string) {
+    this.onBookmark(id);
+  }
+
+  handleUnbookmark(id: string) {
+    this.onUnbookmark(id);
+  }
+
   getSizeByLabel(label: string) {
     return this.sizes.find((size) => size.label === label);
   }
 
   ngOnInit(): void {
     this.getPicture(this.imageId);
+
+
   }
 }
