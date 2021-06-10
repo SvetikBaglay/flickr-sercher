@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IPhoto } from './flickr.service'
 
 export interface IBookmark {
-  id: string
+  id: string;
 }
 
 @Injectable({
@@ -10,34 +10,40 @@ export interface IBookmark {
 })
 
 export class BookmarkService {
-  savePhotos: IBookmark[] = [{id: "51232641172"}];
-
   constructor() { }
 
   addPhoto(photo: IBookmark) {
-    this.savePhotos.push({ id: photo.id });
-    return this.savePhotos
+    let photos = this.getPhotos();
+    photos.push(photo);
+    localStorage.setItem('savedPhotos', JSON.stringify(photos));
   }
 
   getPhotos(): IBookmark[] {
-    return this.savePhotos;
+    const savedPhotos = localStorage.getItem('savedPhotos');
+    if (savedPhotos) {
+      return JSON.parse(savedPhotos);
+    }
+    return [];
   }
 
   removePhoto(id: string) {
     let deletePhoto = [];
-    for (let i = 0; i < this.savePhotos.length; i++) {
-      if (this.savePhotos[i].id != id) {
-        deletePhoto.push(this.savePhotos[i])
+    let photos = this.getPhotos();
+    for (let i = 0; i < photos.length; i++) {
+      if (photos[i].id != id) {
+        deletePhoto.push(photos[i])
        }
     }
-    this.savePhotos = deletePhoto;
-    return this.savePhotos;
+    localStorage.setItem('savedPhotos', JSON.stringify(deletePhoto));
+    return deletePhoto
   }
 
   checkPhoto(id: string) {
+    let photos = this.getPhotos();
+    console.log("Photos: ", photos)
     let i = 0;
-    for (i = 0; i < this.savePhotos.length; i++) {
-      if (this.savePhotos[i].id == id ) {
+    for (i = 0; i < photos.length; i++) {
+      if (photos[i].id === id) {
         return true
       }
     }
@@ -45,3 +51,5 @@ export class BookmarkService {
   }
 
 }
+
+

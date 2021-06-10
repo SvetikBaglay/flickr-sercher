@@ -10,15 +10,23 @@ export class BookmarksComponent implements OnInit {
   savePhotos: IBookmark[];
 
   constructor(
-    private bookmarkServise: BookmarkService,
+    private bookmarkService: BookmarkService,
   ) { }
 
-  deleteBookmarksPhoto(id: string): void {
-    this.savePhotos = this.bookmarkServise.removePhoto(id);
+  onBookmark = (id: string): void => {
+    this.bookmarkService.addPhoto({id})
+  }
+
+  onUnbookmark = (id: string): void => {
+    this.bookmarkService.removePhoto(id)
+  }
+
+  isPhotoBookmarked(id: string): boolean {
+    return this.bookmarkService.checkPhoto(id);
   }
 
   ngOnInit(): void {
-    this.savePhotos = this.bookmarkServise.getPhotos()
+    this.savePhotos = this.bookmarkService.getPhotos()
   }
 
 }

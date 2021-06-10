@@ -46,7 +46,5 @@ export class FlickrImageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPicture(this.imageId);
-
-
   }
 }
