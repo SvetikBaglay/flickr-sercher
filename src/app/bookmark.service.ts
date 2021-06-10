@@ -40,7 +40,7 @@ export class BookmarkService {
 
   checkPhoto(id: string) {
     let photos = this.getPhotos();
-    console.log("Photos: ", photos)
+    // console.log("Photos: ", photos)
     let i = 0;
     for (i = 0; i < photos.length; i++) {
       if (photos[i].id === id) {

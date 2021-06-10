@@ -6,11 +6,10 @@
     </div>
   </form>
   <p *ngIf="this.requestPending">Searching...</p>
-  <p>Search goes here</p>
   <ngb-pagination *ngIf='photos.length' class="pagination justify-content-end me-5" [pageSize]="100" [maxSize]="5" [collectionSize]="photosTotal" (pageChange)="onChangePage($event)" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
   <div class="row row-cols-4 justify-content-around">
     <div *ngFor="let photo of photos" class="m-3 col-md-3 border bg-light p-3">
-      <app-flickr-image [imageId]="photo.id" [isBookmarked]="isPhotoBookmarked(photo.id)" [onBookmark]="onBookmark" [onUnbookmark]="onUnbookmark" ></app-flickr-image>
+      <app-flickr-image [imageTitle]="photo.title" [imageId]="photo.id" [isBookmarked]="isPhotoBookmarked(photo.id)" [onBookmark]="onBookmark" [onUnbookmark]="onUnbookmark" ></app-flickr-image>
     </div>
   </div>
 </div>

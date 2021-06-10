@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FlickrService, ISize } from '../flickr.service';
+import { FlickrService, IPhoto, ISize } from '../flickr.service';
 
 @Component({
   selector: 'app-flickr-image',
@@ -10,10 +10,13 @@ export class FlickrImageComponent implements OnInit {
   private sizes: ISize[] = [];
   largeSquare: ISize;
   requestPending: boolean = false;
+
+  @Input() imageTitle: string;
   @Input() imageId: string;
   @Input() onBookmark: (id: string) => void;
   @Input() onUnbookmark: (id: string) => void;
   @Input() isBookmarked: boolean = false;
+
 
   constructor(
     private flickServise: FlickrService,
@@ -26,12 +29,10 @@ export class FlickrImageComponent implements OnInit {
         this.sizes = resp.sizes.size;
         this.largeSquare = this.getSizeByLabel('Large Square');
         this.requestPending = false;
-
       },
       error: console.log
       })
   }
-
   handleBookmark (id: string) {
     this.onBookmark(id);
   }
