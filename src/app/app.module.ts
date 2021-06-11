@@ -27,9 +27,9 @@ import {APP_BASE_HREF} from '@angular/common';
     NgbPaginationModule,
     NgbAlertModule,
     RouterModule.forRoot([
-      { path: 'search', component: SearchComponent },
+      { path: '', component: SearchComponent },
       { path: 'bookmarks', component: BookmarksComponent },
-      { path: '**', redirectTo: 'search', pathMatch: 'full'},
+      { path: '**', redirectTo: '', pathMatch: 'full'},
     ]),
     NgbModule
   ],
