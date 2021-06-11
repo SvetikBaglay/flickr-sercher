@@ -3,7 +3,7 @@
   <img *ngIf="largeSquare" src={{this.largeSquare.source}} />
 </div>
 <div class="d-flex flex-column" *ngIf="!isBookmarked">
-  <div><button type="button" (click)="handleBookmark(imageId)" class="my-3 btn  btn-primary">Bookmark it!</button></div>
+  <div><button type="button" (click)="handleBookmark(imageId, imageTitle)" class="my-3 btn  btn-primary">Bookmark it!</button></div>
   <div><input type="text" class="form-control" placeholder="some tags?" aria-label="some tags?"></div>
 </div>
 <div *ngIf="isBookmarked">

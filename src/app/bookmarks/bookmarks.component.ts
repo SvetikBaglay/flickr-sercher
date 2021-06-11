@@ -13,8 +13,8 @@ export class BookmarksComponent implements OnInit {
     private bookmarkService: BookmarkService,
   ) { }
 
-  onBookmark = (id: string): void => {
-    this.bookmarkService.addPhoto({id})
+  onBookmark = (id: string, title: string): void => {
+    this.bookmarkService.addPhoto({ id, title });
   }
 
   onUnbookmark = (id: string): void => {

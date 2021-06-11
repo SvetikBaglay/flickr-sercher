@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IPhoto } from './flickr.service'
+
 
 export interface IBookmark {
   id: string;
+  title: string;
 }
 
 @Injectable({
@@ -40,7 +41,6 @@ export class BookmarkService {
 
   checkPhoto(id: string) {
     let photos = this.getPhotos();
-    // console.log("Photos: ", photos)
     let i = 0;
     for (i = 0; i < photos.length; i++) {
       if (photos[i].id === id) {
