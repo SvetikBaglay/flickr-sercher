@@ -18,7 +18,7 @@ export class BookmarksComponent implements OnInit {
   }
 
   onUnbookmark = (id: string): void => {
-    this.bookmarkService.removePhoto(id)
+    this.savePhotos = this.bookmarkService.removePhoto(id)
   }
 
   isPhotoBookmarked(id: string): boolean {

@@ -37,7 +37,7 @@ export class BookmarkService {
        }
     }
     localStorage.setItem('savedPhotos', JSON.stringify(deletePhoto));
-    return deletePhoto
+    return deletePhoto;
   }
 
   checkPhoto(id: string) {
