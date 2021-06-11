@@ -10,6 +10,7 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlickrImageComponent } from './flickr-image/flickr-image.component';
 import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { NgbModule, NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng
     ]),
     NgbModule
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/flickr-sercher/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
