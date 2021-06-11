@@ -12,8 +12,9 @@ export class FlickrImageComponent implements OnInit {
   requestPending: boolean = false;
 
   @Input() imageTitle: string;
+  @Input() imageTag: string;
   @Input() imageId: string;
-  @Input() onBookmark: (id: string, title: string) => void;
+  @Input() onBookmark: (id: string, title: string, tag: string) => void;
   @Input() onUnbookmark: (id: string) => void;
   @Input() isBookmarked: boolean = false;
 
@@ -33,8 +34,8 @@ export class FlickrImageComponent implements OnInit {
       error: console.log
       })
   }
-  handleBookmark (id: string, title: string) {
-    this.onBookmark(id, title);
+  handleBookmark (id: string, title: string, tag: string) {
+    this.onBookmark(id, title, tag);
   }
 
   handleUnbookmark(id: string) {

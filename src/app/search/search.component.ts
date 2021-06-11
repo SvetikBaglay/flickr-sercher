@@ -47,8 +47,8 @@ export class SearchComponent implements OnInit {
     return this.bookmarkService.checkPhoto(id);
   }
 
-  onBookmark = (id: string, title: string): void => {
-    this.bookmarkService.addPhoto({ id, title })
+  onBookmark = (id: string, title: string, tag: string): void => {
+    this.bookmarkService.addPhoto({ id, title, tag })
   }
 
   onUnbookmark = (id: string): void => {

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export interface IBookmark {
   id: string;
   title: string;
+  tag: string;
 }
 
 @Injectable({
