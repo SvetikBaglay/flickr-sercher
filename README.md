@@ -1,3 +1,13 @@
+Objective
+A customer needs a web app to search for images using Flickr. They also want to store some images in the Bookmarks section. See the mockup provided.
+
+Details
+The app should provide an interface to do a simple search on Flickr. The search results area should provide a list of images with titles; also, there should be a possibility to store any image with arbitrary tags provided by the end user. Please note that search results may be huge, we will need a pagination
+The Bookmarks area should list all the saved images with ability to remove any single item.
+There is no limitation in frameworks except that the app should be built with the latest Angular.
+Bookmarks are saved to the browser local storage.
+
+
 # FlickrSercher
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
@@ -14,13 +24,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
